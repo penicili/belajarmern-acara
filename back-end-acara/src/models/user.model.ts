@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { encrypt } from "../utils/encryption";
 
 export interface User {
   fullName: string;
@@ -12,7 +13,7 @@ export interface User {
 }
 
 const Schema = mongoose.Schema;
-const userSchema = new Schema<User>(
+const UserSchema = new Schema<User>(
   {
     fullName: {
       type: Schema.Types.String,
@@ -52,5 +53,22 @@ const userSchema = new Schema<User>(
   }
 );
 
-const UserModel = mongoose.model("User", userSchema);
+// buat middleware buat encrypt password
+// pre itu buat nyegat data sebelum "save" terus kalo udah baru 
+// trigger next() buat lanjut ngelanjutin "save"
+UserSchema.pre("save", function (next){
+  // ambil semua data dari user
+  // dan simpen ke const user
+  const user = this;
+  user.password = encrypt(user.password);
+  next();
+});
+// Override method toJSON dari document mongoDB
+UserSchema.methods.toJSON = function (){
+  const user = this.toObject();
+  delete user.password;
+  return user;
+}
+
+const UserModel = mongoose.model("User", UserSchema);
 export default UserModel;
