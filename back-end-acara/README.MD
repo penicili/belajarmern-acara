@@ -4,8 +4,8 @@ ___
 ### Register
 
 POST:BASEURL/api/auth/register
-```
 Request Body:
+```
 {
     "fullName" : "string",
     "email" : "string",
@@ -18,8 +18,8 @@ Request Body:
 ### Login 
 
 POST:BASEURL/api/auth/login
-```
 Request Body:
+```
 {
     "identifier" : "string" //(username or email)
     "password" : "string"
