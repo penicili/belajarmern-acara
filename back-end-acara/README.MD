@@ -3,7 +3,7 @@ idk how to write a proper docs, so here it is
 ___
 ### Register
 
-POST:BASEURL/api/auth/register
+POST:BASEURL/api/auth/register \n
 Request Body:
 ```
 {
@@ -17,7 +17,7 @@ Request Body:
 
 ### Login 
 
-POST:BASEURL/api/auth/login
+POST:BASEURL/api/auth/login\n
 Request Body:
 ```
 {
