@@ -25,3 +25,4 @@ Request Body:
     "password" : "string"
 }
 ```
+Login POST request -> check user identifier -> match password -> generate jwt token -> send jwt token as response \ 
