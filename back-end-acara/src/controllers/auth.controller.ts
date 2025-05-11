@@ -72,6 +72,11 @@ export default {
 
   // method login
   async login(req: Request, res: Response) {
+    /**
+      #swagger.requestBody = {
+        required: true,
+        schema: {$ref: "#/components/schemas/LoginRequest"}}
+     */
     // Destructure request body
     const { identifier, password } = req.body as unknown as TLogin;
     try {
@@ -116,6 +121,10 @@ export default {
 
   // method me
   async me(req: IReqUser, res: Response) {
+    /**
+      #swagger.security =[{
+        "bearerAuth":[]}]
+     */
     try {
       // ambil data user dari request body (in this case, token)
       const user = req.user;
