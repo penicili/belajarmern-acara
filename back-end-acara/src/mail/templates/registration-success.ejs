@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Email Confrimation for Acara</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            padding-bottom: 20px;
+        }
+        .header h1 {
+            color: #333;
+        }
+        .content {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #555;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            justify-self: center;
+        }
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            color: #999;
+            margin-top: 20px;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Selamat Datang</h1>
+      </div>
+      <div class="content">
+        <p>Halo <%= username %>,</p>
+        <p>
+          Terima kasih telah mendaftar di layanan kami. Berikut adalah informasi
+          dari akun anda
+        </p>
+        <ul>
+          <li><strong>Nama: <%= fullname %></strong></li>
+          <li><strong>Email: <%= email %></strong></li>
+          <li><strong>Tanggal Pendaftaran: <%= createdAt %></strong></li>
+        </ul>
+        <p>Untuk memulai, silahkan klik tombol dibawah ini:</p>
+        <a href="<%= activationLink %>" class="button">Aktivasi Akun</a>
+        <p>Jika anda memiliki pertanyaan, jangan ragu untuk menghubugni kami</p>
+        <p>Salam hangat, ACARA</p>
+      </div>
+      <div class="footer">
+        <p>&copy; 2024 ACARA Event Management System. Semua hak dilindungi</p>
+      </div>
+    </div>
+  </body>
+</html>
