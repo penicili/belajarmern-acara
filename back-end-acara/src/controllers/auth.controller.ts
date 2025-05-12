@@ -175,11 +175,11 @@ export default {
   // activation code
   async activation(req: Request, res: Response) {
     /**
-        #swagger.tags = ['Auth']
-        #swagger.requestBody = {
-          required: true,
-          schema: {$ref: "#/components/schemas/ActivationRequest"}}
-       */
+      #swagger.tags = ['Auth']
+      #swagger.requestBody = {
+        required: true,
+        schema: {$ref: "#/components/schemas/ActivationRequest"}}
+     */
     try {
       // ambil property code dari request body
       const { code } = req.body as { code: string };
