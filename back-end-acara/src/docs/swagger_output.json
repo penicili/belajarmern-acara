@@ -31,27 +31,16 @@
           }
         },
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "fullName": {
-                    "example": "any"
-                  },
-                  "username": {
-                    "example": "any"
-                  },
-                  "email": {
-                    "example": "any"
-                  },
-                  "password": {
-                    "example": "any"
-                  },
-                  "confirmPassword": {
-                    "example": "any"
-                  }
-                }
+                "$ref": "#/components/schemas/RegisterRequest"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterRequest"
               }
             }
           }
@@ -115,6 +104,33 @@
           }
         ]
       }
+    },
+    "/auth/activation": {
+      "post": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "code": {
+                    "example": "any"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -130,15 +146,55 @@
         "properties": {
           "identifier": {
             "type": "string",
-            "example": "tigaPeriode2"
+            "example": "jawa jawa"
           },
           "password": {
             "type": "string",
-            "example": "hidupjokowi"
+            "example": "Hidupjokowi322"
           }
         },
         "xml": {
           "name": "LoginRequest"
+        }
+      },
+      "RegisterRequest": {
+        "type": "object",
+        "properties": {
+          "fullName": {
+            "type": "string",
+            "example": "Bagas Hytam"
+          },
+          "username": {
+            "type": "string",
+            "example": "jawa jawa"
+          },
+          "email": {
+            "type": "string",
+            "example": "jawahytam@yopmail.com"
+          },
+          "password": {
+            "type": "string",
+            "example": "Hidupjokowi322"
+          },
+          "confirmPassword": {
+            "type": "string",
+            "example": "Hidupjokowi322"
+          }
+        },
+        "xml": {
+          "name": "RegisterRequest"
+        }
+      },
+      "ActivationRequest": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "abcdefghijklmnop"
+          }
+        },
+        "xml": {
+          "name": "ActivationRequest"
         }
       }
     }

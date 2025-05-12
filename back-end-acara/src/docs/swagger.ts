@@ -26,9 +26,19 @@ const doc = {
     },
     schemas: {
       LoginRequest: {
-        identifier: "tigaPeriode2",
-        password: "hidupjokowi",
+        identifier: "jawa jawa",
+        password: "Hidupjokowi322",
       },
+      RegisterRequest: {
+        fullName: "Bagas Hytam",
+        username: "jawa jawa",
+        email: "jawahytam@yopmail.com",
+        password: "Hidupjokowi322",
+        confirmPassword: "Hidupjokowi322",
+      },
+      ActivationRequest: {
+        code: "abcdefghijklmnop",
+      }
     },
   },
 };
