@@ -4,7 +4,7 @@ import { getSession } from "next-auth/react";
 import { Session } from "next-auth";
 
 interface CustomSession extends Session {
-  accesToken?: string;
+  accessToken?: string;
 }
 
 const headers = {
@@ -19,9 +19,12 @@ const instance = axios.create({
 
 instance.interceptors.request.use(
   async (request) => {
+    // Add this temporarily for debugging
+    console.log('Current request URL:', request.baseURL);
+    
     const session: CustomSession | null = await getSession();
-    if (session && session.accesToken) {
-      request.headers.Authorization = `Bearer ${session.accesToken}`;
+    if (session && session.accessToken) {
+      request.headers.Authorization = `Bearer ${session.accessToken}`;
     }
     return request;
   },
@@ -36,3 +39,4 @@ instance.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+export default instance;
