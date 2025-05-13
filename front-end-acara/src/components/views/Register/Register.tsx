@@ -4,6 +4,7 @@ import Link from "next/link";
 import useRegister from "./useRegister";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Controller } from "react-hook-form";
+import { cn } from "@/utils/cn";
 
 const Register = () => {
   // destructure properties dari useRegister
@@ -16,7 +17,6 @@ const Register = () => {
     handleSubmit,
     isPendingRegister,
   } = useRegister();
-  console.log(errors);
   return (
     <div className="flex w-full flex-col items-center justify-center gap-10 lg:flex-row lg:gap-20">
       <div className="flex w-full flex-col items-center justify-center gap-10 lg:w-1/3">
@@ -42,9 +42,14 @@ const Register = () => {
             <Link href="/auth/login" className="font-semibold text-danger-400">
               Login here
             </Link>
+            {errors.root && (
+              <p className="text-danger-500">
+                {errors?.root?.message}
+              </p>
+            )}
           </p>
           <form
-            className="flex w-80 flex-col gap-4"
+            className={cn("flex w-80 flex-col", Object.keys(errors).length > 0 ? "gap-2" : "gap-4")}
             // handleSubmit dari react-hook-form bakal ngelakuin its thing (validasi dll)
             // dan kalo berhasil, bakal manggil handleRegister (eksekusi register service)
             onSubmit={handleSubmit(handleRegister)}

@@ -18,10 +18,7 @@ const instance = axios.create({
 });
 
 instance.interceptors.request.use(
-  async (request) => {
-    // Add this temporarily for debugging
-    console.log('Current request URL:', request.baseURL);
-    
+  async (request) => {    
     const session: CustomSession | null = await getSession();
     if (session && session.accessToken) {
       request.headers.Authorization = `Bearer ${session.accessToken}`;
@@ -32,11 +29,7 @@ instance.interceptors.request.use(
 );
 
 instance.interceptors.response.use(
-  (response) => {
-    return response;
-  },
-  (error) => {
-    return Promise.reject(error);
-  }
+  (response) => response,
+  (error) => Promise.reject(error)
 );
 export default instance;

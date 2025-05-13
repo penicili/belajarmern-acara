@@ -63,8 +63,10 @@ const useRegister = () => {
     mutationFn: registerService,
     // kalalu error, set error ke form dan return error message
     onError(error) {
+      console.error("Registration error:", error);
+      const errorMessage = (error as any).response?.data?.message || error.message;
       setError("root", {
-        message: error.message,
+        message: errorMessage,
       });
     },
     onSuccess() {
