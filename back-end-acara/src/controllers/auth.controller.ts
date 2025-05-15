@@ -191,6 +191,12 @@ export default {
         // options: return updated document
         { new: true }
       );
+      if (!user) {
+        return res.status(404).json({
+          message: "User not found or already activated",
+          data: null,
+        })
+      }
       res.status(200).json({
         message: "User Activation success",
         data: user,
